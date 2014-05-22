@@ -1,0 +1,95 @@
+set hidden                  "fix buffers
+set history=1000            "increase vim's memory
+runtime macros/matchit.vim  "makes % match if/then...
+set wildmenu                "show all menu items
+set wildmode=list:longest,full   "behaves like shell
+set ignorecase              "case insensitive default
+set smartcase               "sensitive if capital letter
+set title                   "show file title in vim
+set scrolloff=4             "gives more context on scrolls
+set ruler
+set backspace=indent,eol,start "Intuitive backspacing in insert mode
+set listchars=tab:>-,trail:·,eol:$
+
+" remember some stuff after quiting vim:
+" marks, registers, searches, buffer list
+set viminfo='20,<50,s10,h,%
+
+
+" File-type highlighting and configuration.
+" Run :filetype (without args) to see what you may have
+" to turn on yourself, or just set them all to be sure.
+syntax on
+filetype on
+filetype plugin on
+filetype indent on
+" Highlight search terms
+set hlsearch
+set incsearch " ...dynamically as they are typed.
+
+"centralize all vim swp files.
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
+"general options
+set t_Co=256
+colorscheme desert
+"colorscheme vividchalk
+set hlsearch
+set incsearch
+set nowrap
+set cursorline
+set guioptions-=T
+
+"torna a opcao g default para substituicoes
+set gdefault
+
+"man
+so $VIMRUNTIME/ftplugin/man.vim
+nnoremap K :Man <C-R><C-W><CR>
+
+
+"ctags paths
+set tags+=./tags
+set tags+=../tags
+set tags+=../../tags
+set tags+=../../../tags
+set tags+=../../../../tags
+set tags+=~/rails/geppetto/tags
+
+set nocompatible
+syntax on
+filetype on
+filetype plugin indent on
+
+" Mapping <tab> to chage tabs on commands mode
+nmap <tab> :tabnext<CR>
+nmap <S-tab> :tabprevious<CR>
+nnoremap <silent> <F2> :update!<CR>
+imap <silent> <F2> <C-O><F2>
+
+" write with sudo privileges
+cmap w!! w !sudo tee % > /dev/null
+
+cabbrev lv
+      \ noautocmd lvim /\<lt><C-R><C-W>\>/gj
+      \ *<C-R>=(expand("%:e")=="" ? "" : ".".expand("%:e"))<CR>
+      \ <Bar> lw
+      \ <C-Left><C-Left><C-Left>
+
+" F11 = recursive grep current word
+map <f11> :lv<CR>
+" F12 = closes location window
+map <f12> :lcl <CR>
+
+
+"indent options
+set ts=2 sw=2 sts=2
+set expandtab
+set autoindent
+set smartindent
+
+
+"NERDtree .
+"autocmd VimEnter * NERDTree
+"autocmd VimEnter * wincmd p
