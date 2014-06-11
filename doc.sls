@@ -1,6 +1,6 @@
 
-https://54.200.225.212:/opt/git/doc.git:
+https://github.com/beschoren/doc:
   git.latest:
     - rev: master
-    - target: ~/doc
+    - target: /home/fbcosta/doc
     - user: fbcosta
