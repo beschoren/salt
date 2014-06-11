@@ -5,3 +5,4 @@ base:
   - rails
   - tmux
   - doc
+  - nginx
